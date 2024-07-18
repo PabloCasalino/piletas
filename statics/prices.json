@@ -1,0 +1,27 @@
+{
+"piletas":[
+    {
+        "modelo": "DB 360",
+        "medidas": "3,6 X 2,00 X 0,90",
+        "precio":"2.341.326"
+    },
+    {
+        "modelo": "DB 395",
+        "medidas": "3,90 X 2,10 X 1,00",
+        "precio":"2.356.649"
+    },    {
+        "modelo": "BE 385",
+        "medidas": "390 X 2,25 X 1,00",
+        "precio":"2.415.134"
+    },    {
+        "modelo": "BE 390",
+        "medidas": "3,90 X 2,25 X 1X3",
+        "precio":"2.523.221"
+    },    {
+        "modelo": "BE 490",
+        "medidas": "4,90 X 2,60 X 1,3",
+        "precio":"3.082.501"
+    }
+]
+
+}
