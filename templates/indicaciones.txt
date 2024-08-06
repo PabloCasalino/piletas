@@ -1,0 +1,173 @@
+Para llenar el presupuesto con los datos que el usuario completa en el formulario, puedes usar `localStorage` para almacenar los datos del formulario en la primera página y luego recuperarlos en la página del presupuesto. Aquí te dejo un ejemplo de cómo hacerlo:
+
+### 1. Código del formulario (Formulario.html)
+
+Agrega un `id` a cada uno de los campos para que sea más fácil acceder a ellos y utiliza JavaScript para guardar los datos en `localStorage` cuando el formulario se envíe:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Formulario</title>
+  <link rel="stylesheet" href="../statics/styles/formulario.css" />
+</head>
+
+<body>
+  <!-- FORMULARIO -->
+  <form id="formulario" class="formulario">
+    <label>Nombre</label>
+    <input id="nombre" type="text" />
+    <label>Apellido</label>
+    <input id="apellido" type="text" />
+    <label>Teléfono</label>
+    <input id="telefono" type="number" />
+    <label>Barrio</label>
+    <input id="barrio" type="text" />
+    <label>Fecha</label>
+    <input id="fecha" type="date" />
+    <label>Vendedor</label>
+    <input id="vendedor" type="text" />
+    <label>E-mail</label>
+    <input id="email" type="email" />
+    <button class="button" type="submit">Proceder</button>
+  </form>
+
+  <script>
+    document.getElementById('formulario').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value;
+      const apellido = document.getElementById('apellido').value;
+      const telefono = document.getElementById('telefono').value;
+      const barrio = document.getElementById('barrio').value;
+      const fecha = document.getElementById('fecha').value;
+      const vendedor = document.getElementById('vendedor').value;
+      const email = document.getElementById('email').value;
+
+      localStorage.setItem('nombre', nombre);
+      localStorage.setItem('apellido', apellido);
+      localStorage.setItem('telefono', telefono);
+      localStorage.setItem('barrio', barrio);
+      localStorage.setItem('fecha', fecha);
+      localStorage.setItem('vendedor', vendedor);
+      localStorage.setItem('email', email);
+
+      window.location.href = 'presupuesto.html';
+    });
+  </script>
+</body>
+
+</html>
+```
+
+### 2. Código del presupuesto (Presupuesto.html)
+
+Recupera los datos almacenados en `localStorage` y los inserta en los campos correspondientes del formulario de presupuesto:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presupuesto Hidrosol</title>
+  <link rel="stylesheet" type="text/css" href="../statics/styles/presupuesto.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <img src="../statics/img/header.png" alt="Encabezado" />
+  </header>
+
+  <!-- Formulario -->
+  <main>
+    <div class="container">
+      <div class="columna">
+        <form>
+          <div class="formulario-items">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required />
+          </div>
+          <div class="formulario-items">
+            <label for="telefono">Teléfono:</label>
+            <input type="number" id="telefono" name="telefono" required />
+          </div>
+          <div class="formulario-items">
+            <label for="barrio">Barrio:</label>
+            <input type="text" id="barrio" name="barrio" required />
+          </div>
+        </form>
+      </div>
+      <div class="columna">
+        <form>
+          <div class="formulario-items">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required />
+          </div>
+          <div class="formulario-items">
+            <label for="vendedor">Vendedor:</label>
+            <input type="text" id="vendedor" name="vendedor" required />
+          </div>
+          <div class="formulario-items">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Detalle -->
+    <div class="detalle">
+      <p><strong>NUESTRO PRESUPUESTO INCLUYE:</strong></p>
+    </div>
+    <div class="description-container">
+      <p class="description-items"><strong>PISCINA:</strong> Plástica Reforzada con fibra de vidrio marca MOLDEAR</p>
+      <p class="description-items"><strong>MODELO:</strong> Recta MODELO ******* MEDIDAS: medidas</p>
+      <p class="description-items"><strong>VEREDA:</strong> Borde perimetral de 50cm de losetas atérmicas, antideslizantes, anti-reflex marca MOLDEAR</p>
+      <p class="description-items"><strong>EQUIPAMIENTO:</strong> Sistema de filtración fijo en casilla compuesto por tanque, carga filtrante y <br /> electrobomba marca VULCANO</p>
+      <p class="description-items"><strong>CAÑERÍA:</strong> Cañería de PVC especial marca TIGRE clase 10. Apta para agua fría/caliente</p>
+      <p class="description-items"><strong>KIT DE LIMPIEZA:</strong> Elementos necesarios para la limpieza de piscina, el cual incluye limpiafondo, <br /> sacahojas, manguera flotante y mango telescópico marca VULCANO</p>
+      <p class="description-items"><strong>INSTALACIÓN DE PISCINA:</strong> Instalación básica en terrenos normales, sin pendiente, ni rocosos <br /> (SE ADJUNTA DETALLE)*</p>
+      <p class="description-items"><strong>LOGÍSTICA Y MATERIALES:</strong> Materiales y contenedores para la instalación en terrenos normales <br /> (SE ADJUNTA DETALLE)*</p>
+    </div>
+
+    <!-- Precio -->
+    <div class="contado">
+      <p class="texto">
+        <strong><span class="promo">PRECIO PROMOCIONAL DE CONTADO</span><span class="precio"> $3.122.255</span></strong>
+      </p>
+    </div>
+
+    <p class="texto aviso"><strong>CONSULTANOS POR NUESTRA FINANCIACIÓN</strong></p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <img class="footer" src="../statics/img/footer.png" alt="Pie de página" />
+  </footer>
+
+  <script>
+    window.onload = function() {
+      document.getElementById('nombre').value = localStorage.getItem('nombre');
+      document.getElementById('telefono').value = localStorage.getItem('telefono');
+      document.getElementById('barrio').value = localStorage.getItem('barrio');
+      document.getElementById('fecha').value = localStorage.getItem('fecha');
+      document.getElementById('vendedor').value = localStorage.getItem('vendedor');
+      document.getElementById('email').value = localStorage.getItem('email');
+    };
+  </script>
+</body>
+
+</html>
+```
+
+### Explicación
+
+- **Formulario.html**: Al enviar el formulario, se almacenan los datos en `localStorage` y luego el usuario es redirigido a la página `presupuesto.html`.
+- **Presupuesto.html**: Cuando la página se carga, los datos guardados en `localStorage` se recuperan y se colocan en los campos del formulario.
+
+Esto permite que los datos ingresados por el usuario en el formulario inicial se mantengan al acceder a la página del presupuesto.
