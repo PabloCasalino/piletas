@@ -2,7 +2,7 @@
         e.preventDefault();
 
         let nombre = document.getElementById('nombre').value;
-        let apellido = document.getElementById('apellido').value;
+        // let apellido = document.getElementById('apellido').value;
         let telefono = document.getElementById('telefono').value;
         let barrio = document.getElementById('barrio').value;
         let fecha = document.getElementById('fecha').value;
@@ -10,7 +10,7 @@
         let email = document.getElementById('email').value;
 
         localStorage.setItem('nombre',nombre);
-        localStorage.setItem('apellido',apellido);
+        // localStorage.setItem('apellido',apellido);
         localStorage.setItem('telefono',telefono);
         localStorage.setItem('barrio',barrio);
         localStorage.setItem('fecha',fecha);
