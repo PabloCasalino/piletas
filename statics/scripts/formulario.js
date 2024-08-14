@@ -21,3 +21,7 @@
 
     });
 
+    function erease(event){
+        event.preventDefault();
+        document.getElementById('formulario').reset();
+    }

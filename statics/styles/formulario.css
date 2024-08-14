@@ -15,7 +15,7 @@ body {
 }
 
   
-input, #modelo{
+input, #modelo_select{
     width: 450px;
     height: 30px;
     border-radius: 30px;
