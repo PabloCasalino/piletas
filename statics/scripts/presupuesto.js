@@ -32,19 +32,19 @@ const data = {
         },
         {
             "familia": "RECTA",
-            "modelo": "M-R5C00",
+            "modelo": "M-RC500",
             "medidas": "5 X 2,65 X 1,3",
             "precio": "5.680.668"
         },
         {
             "familia": "RECTA",
-            "modelo": "M-R6C00",
+            "modelo": "M-RC600",
             "medidas": "6 X 3 X 1,35",
             "precio": "6.858.568"
         },
         {
             "familia": "RECTA",
-            "modelo": "M-R7C00",
+            "modelo": "M-RC700",
             "medidas": "7 X 3,45 X 1,35",
             "precio": "8.226.966"
         },
@@ -186,8 +186,9 @@ window.addEventListener('load', function () {
     //     alert('El modelo no se encuentra')
     // }
 
-    definirFamilia(modeloValor)
-    definirMedidas(modeloValor)
+    definirFamilia(modeloValor);
+    definirMedidas(modeloValor);
+    definirPrecio(modeloValor);
 });
 
 function definirFamilia(modeloValor) {
@@ -206,16 +207,31 @@ function definirFamilia(modeloValor) {
 }
 
 function definirMedidas(modeloValor){
-    let medidas = data.piletas.find(pileta => pileta.modelo === modeloValor)
+    let medida = data.piletas.find(pileta => pileta.modelo === modeloValor)
 
-    if (medidas){
+    if (medida){
         let medidasElement = document.getElementById('medida');
         if (medidasElement){
-            medidasElement.textContent = pileta.medidas;
+            medidasElement.textContent = medida.medidas;
         }else{
             alert('Medidas no encontradas')
         }
     }else{
         alert('Modelo no encontrado')
+    }
+}
+
+function definirPrecio(modeloValor){
+    let precios = data.piletas.find(pileta => pileta.modelo === modeloValor);
+    
+    if (precios){
+       let preciosElement = document.getElementById("precio");
+       if(preciosElement){
+        preciosElement.textContent = precios.precio
+       }else{
+        alert('Precio no encontrado')
+       }   
+    }else{
+        alert('modelo no encontrado');
     }
 }
